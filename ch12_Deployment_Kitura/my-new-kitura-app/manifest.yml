@@ -1,0 +1,11 @@
+applications:
+- buildpack: swift_buildpack
+  command: '''MyNewKituraApp'''
+  domain: mybluemix.net
+  host: my-new-kitura-app
+  instances: 1
+  memory: 128M
+  name: MyNewKituraApp
+  timeout: 180
+domain: mybluemix.net
+host: my-new-kitura-app

@@ -1,0 +1,15 @@
+{% include "header.stencil" %}
+
+<h1>{{ title }}</h1>
+
+[ ➕ <a href="/journal/create">Add New Entry</a> ]
+<P>
+{% for entry in entries %}
+<hr>
+<h2>{{ entry.title }}</h2>
+{{ entry.content }}
+<BR> [ 📝 <a href="/journal/get/{{ forloop.counter0 }}">Edit</a> | 🗑 <a href="/journal/remove/{{ forloop.counter0 }}">Remove</a> ]
+<BR> <em>Index:{{ forloop.counter0 }} out of {{ count }}; ID: {{ entry.id }};</em>
+{% endfor %}
+
+{% include "footer.stencil" %}

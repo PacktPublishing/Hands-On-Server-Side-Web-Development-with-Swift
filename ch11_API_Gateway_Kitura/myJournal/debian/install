@@ -1,0 +1,3 @@
+.build/							usr/src/myJournal
+terraform/scripts/install.sh	usr/src/myJournal
+terraform/scripts/start.sh		usr/src/myJournal

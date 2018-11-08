@@ -1,0 +1,17 @@
+{% include "header.stencil" %}
+[ <a class="fas fa-plus-square" href="/journal/create"> Add New Entry</a> ]
+<P>
+{% for entry in entries %}
+<!--Section {{ forloop.counter0 }}-->
+<section class="sec{{ forloop.counter0 }}" id="sec{{ forloop.counter0 }}">
+<div class="Container entry">
+<h2>{{ entry.title }}</h2>
+{{ entry.content }}
+<BR> [ ID: {{ entry.id }}
+: <a class="fas fa-edit" href="/journal/get/{{ entry.id }}"> Edit</a>
+| <a class="fas fa-trash-alt" href="/journal/remove/{{ entry.id }}"> Remove</a> ]
+</div>
+</section>
+{% endfor %}
+Total: {{ count }};
+{% include "footer.stencil" %}

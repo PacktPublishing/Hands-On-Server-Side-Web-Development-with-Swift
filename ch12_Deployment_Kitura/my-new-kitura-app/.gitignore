@@ -1,0 +1,12 @@
+.DS_Store
+/.build
+/.build-ubuntu
+/Packages
+/config.json
+/spec.json
+./config/localdev-config.json
+credentials.json
+config.json
+spec.json
+localdev-config.json
+config/localdev-config.json

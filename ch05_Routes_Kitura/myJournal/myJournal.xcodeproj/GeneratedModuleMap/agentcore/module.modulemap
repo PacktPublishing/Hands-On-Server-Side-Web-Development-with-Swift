@@ -1,0 +1,4 @@
+module agentcore {
+    umbrella "/Users/fyeung1/Downloads/Packt/ch5/kitura/myJournal/.build/checkouts/omr-agentcore-1826539389957424207/src/agentcore/include"
+    export *
+}

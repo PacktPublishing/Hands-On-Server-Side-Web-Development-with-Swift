@@ -1,0 +1,15 @@
+{% include "header.stencil" %}
+<h1>Edit a Journal Entry</h1>
+<form action="/journal/edit/{{ index }}" method="post" enctype="application/x-www-form-urlencoded" target="/journal/all">
+<input name="id" type="hidden" value="{{ entry.id }}" />
+<input name="title" type="text" value="{{ entry.title }}" />
+<P>
+<textarea name="content" rows="5">
+{{ entry.content }}
+</textarea>
+<P>
+<button type="submit" class="btn btn-lg btn-primary">Submit</button>
+</form>
+<BR> <em>Index:{{ index }}; ID: {{ entry.id }};</em>
+{% include "footer.stencil" %}
+

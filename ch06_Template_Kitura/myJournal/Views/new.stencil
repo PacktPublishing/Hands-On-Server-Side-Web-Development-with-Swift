@@ -1,0 +1,13 @@
+{% include "header.stencil" %}
+<h1>Create a Journal Entry</h1>
+<form action="/journal/new" method="post" enctype="application/x-www-form-urlencoded" target="/journal/all">
+<input name="id" type="hidden" value="-1" />
+<input name="title" type="text" placeholder="Enter title here" />
+<P>
+<textarea name="content" placeholder="Enter your journal content here..." rows="5">
+
+</textarea>
+<P>
+<button type="submit" class="btn btn-lg btn-primary">Submit</button>
+</form>
+{% include "footer.stencil" %}
