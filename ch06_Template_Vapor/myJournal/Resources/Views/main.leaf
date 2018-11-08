@@ -1,0 +1,13 @@
+#embed("header")
+<h1>#(title)</h1>
+
+[ ➕ <a href="/journal/create">Add New Entry</a> ]
+<P>
+#for(entry in entries) {
+    <hr>
+    <h2>#(entry.title)</h2>
+    #(entry.content)
+    <BR> [ 📝 <a href="./#(index)/get">Edit</a> | 🗑 <a href="./#(index)/remove">Remove</a> ]
+    <BR> <em>Index:#(index) out of #(count); ID: #(entry.id);</em>
+}
+#embed("footer")

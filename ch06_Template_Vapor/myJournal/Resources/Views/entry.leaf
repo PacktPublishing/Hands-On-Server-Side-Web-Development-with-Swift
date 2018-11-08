@@ -1,0 +1,15 @@
+#embed("header")
+<h1>Edit a Journal Entry</h1>
+<form action="/journal/#(index)/edit/" method="post">
+<input name="id" type="hidden" value=#(entry.id)" />
+<input name="title" type="text" value="#(entry.title)" />
+<P>
+<textarea name="content" rows="5">
+#(entry.content)
+</textarea>
+<P>
+<button type="submit" class="btn btn-lg btn-primary">Submit</button>
+<BR>
+<em>Index:#(index); ID: #(entry.id)</em>
+
+#embed("footer")
