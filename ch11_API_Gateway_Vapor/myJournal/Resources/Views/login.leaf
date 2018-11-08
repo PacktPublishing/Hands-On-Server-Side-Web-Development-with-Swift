@@ -1,0 +1,46 @@
+#embed("header")
+<!--form-->
+<section class="form" id="myLoginForm">
+<div class="container">
+<div class="row">
+<div class="col-lg-12">
+<div class="heading">
+<h1>Login as an Admin</h1>
+</div>
+</div>
+</div>
+</div>
+<div class="container max-width">
+#if(error) {
+<div class="row">
+<div class="col-md-12">
+<div class="alert alert-danger" role="alert">
+Incorrect email or password
+</div>
+</div>
+</div>
+}
+#if(login) {
+<div class="row">
+<div class="col-md-12">
+<div class="alert alert-info" role="alert">
+You need to login as an admin
+</div>
+</div>
+</div>
+}
+<div class="row">
+<div class="col-md-12">
+<form action="/journal/auth" method="post">
+<fieldset class="form-group">
+<input type="hidden" name="name" value="dontcare"/>
+<input type="text" class="form-control" name="login" placeholder="Enter your login (email or username) here.">
+<input type="password" class="form-control" name="password" placeholder="Enter your password here.">
+</fieldset>
+<button type="submit" class="entryform submit">Submit</button>
+</form>
+</div>
+</div>
+</div>
+</section>
+#embed("footer")

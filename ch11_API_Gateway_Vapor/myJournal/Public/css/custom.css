@@ -1,0 +1,181 @@
+/*----------- BODY ---------*/
+
+body {
+    font-family:sans-serif;
+    font-size:1em;
+    color:#777;
+    font-weight:300;
+    line-height:1.7;
+    overflow-x:hidden;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    color:#333;
+    line-height:1.4;
+    font-weight:700;
+}
+
+.max-width {
+    max-width:960px;
+    margin:0 auto;
+}
+
+a,a:hover {
+    color:#563d7c;
+    text-decoration:none;
+}
+
+img{
+  width:100%;
+  max-width: 100%;
+  height:auto;
+}
+
+/*----------- BANNER ---------*/
+
+header {
+    padding-bottom:40px;
+}
+
+.banner-align-top {
+    padding:0;
+}
+
+.banner-background {
+    text-align:center;
+    background-position:center center;
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-attachment:fixed;
+    overflow:hidden;
+}
+
+#banner-size {
+    height:600px;
+    padding-top:160px;
+}
+
+.banner-title {
+    font-family:sans-serif;
+    font-size:72px;
+    line-height:1;
+    font-weight:300;
+    color:#fff
+}
+
+.banner-subtitle {
+    font-family:sans-serif;
+    font-size:30px;
+    line-height:1.4;
+    font-weight:300;
+    color:#fff;
+}
+
+/*----------- ENTRY ---------*/
+.entry {
+    background:#efffef;
+    color:#000000;
+    padding:15px 30px;
+    margin-left:20px;
+    margin-right:20px;
+    margin-bottom:20px;
+}
+
+/*----------- FORM ---------*/
+input.form-control {
+    background:#ccddcc;
+    border:solid 1px #557755;
+    color:#000000;
+    padding:15px 30px;
+    margin-right:3%;
+    margin-bottom:30px;
+    outline:none;
+    border-radius: 3;
+}
+
+textarea.form-control {
+    background:#ccddcc;
+    color:#000000;
+    border:solid 1px #557755;
+    padding:15px 30px;
+    margin-bottom:40px;
+    outline:none;
+    height:200px;
+    border-radius: 3;
+}
+
+button.entryform.submit {
+    background:#557755;
+    font-family: sans-serif;
+    color:#fff;
+    font-size:1em;
+    font-weight:400;
+    text-align:center;
+    margin:0;
+    border:none;
+    border-radius:3px;
+    padding:15px 45px;
+}
+
+button.entryform.submit:hover {
+    background:#339933;
+}
+
+.form-control:focus{
+    border-color: #339933;
+    outline: 0;
+}
+
+.done {
+    display:none;
+}
+
+/*----------- FOOTER ---------*/
+.footer {
+    background:#557755;
+    margin-top:100px;
+    position:relative
+}
+
+.footer .container {
+    padding:60px 0 20px;
+}
+
+.footer ul {
+    margin:0 auto;
+    margin-bottom:30px;
+    margin-top:10px;
+    text-align:center;
+    list-style-type:none;
+    padding-left:0;
+}
+
+/* icon list */
+.footer ul li {
+	text-align:center;
+    display:inline-block;
+    background:rgba(0,0,0,0.2);
+    color:#fff;
+    line-height:45px;
+    margin:0 4px;
+    width:45px;
+    height:45px;
+    -webkit-border-radius:3px;
+    border-radius:3px;
+}
+
+.footer ul li:hover {
+    background:#339933;
+}
+
+/* Copyright */
+.footer p {
+    color:#fff;
+    font-size:.9em;
+    line-height:24px;
+    font-weight:300;
+    text-align:center;
+    text-transform:uppercase;
+}
+
+

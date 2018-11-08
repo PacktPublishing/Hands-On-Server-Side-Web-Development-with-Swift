@@ -1,0 +1,25 @@
+#embed("header")
+#if(isAdmin == true) {
+[ <a class="fas fa-plus-square" href="/journal/admin/create"> Add New Entry</a>
+| <a class="fas fa-user-alt" href="/journal/account/all"> Manage Accounts</a>
+ ]
+}
+<P>
+#for(entry in entries) {
+<!--Section #(entry.id)-->
+<section class="sec#(entry.id)" id="sec#(entry.id)">
+<div class="Container entry">
+<h2>#(entry.title)</h2>
+#(entry.content)
+#if(isAdmin == true) {
+<BR> [ ID: #(entry.id)
+: <a class="fas fa-edit" href="/journal/admin/#(entry.id)/get"> Edit</a>
+| <a class="fas fa-trash-alt" href="/journal/admin/#(entry.id)/remove"> Remove</a> ]
+}
+</div>
+</section>
+}
+#if(isAdmin == true) {
+Total: #(count);
+}
+#embed("footer")

@@ -1,0 +1,41 @@
+#embed("header")
+<!--form-->
+<section class="form" id="myForm">
+<div class="container">
+<div class="row">
+<div class="col-lg-12">
+<div class="heading">
+<h1>Edit a Journal Entry</h1>
+</div>
+</div>
+</div>
+</div>
+<div class="container max-width">
+<div class="row">
+<div class="done">
+<div class="alert alert-success">
+<button type="button" class="close" data-dismiss="alert">X</button>
+Your message has been submitted.
+</div>
+</div>
+<div class="col-md-12">
+<form action="/journal/#(entry.id)/edit/" method="post">
+<fieldset class="form-group">
+<!input name="id" type="hidden" value=#(entry.id)" />
+<input name="title" type="text" class="form-control" value="#(entry.title)" />
+</fieldset>
+
+<fieldset class="form-group">
+<textarea class="form-control" rows="5" name="content">
+#(entry.content)
+</textarea>
+</fieldset>
+
+<button type="submit" class="entryform submit">Submit</button>
+</form>
+</div>
+</div>
+</div>
+</section>
+#embed("footer")
+

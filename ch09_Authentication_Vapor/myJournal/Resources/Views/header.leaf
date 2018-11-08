@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>#(title)</title>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+<!-- Custom CSS -->
+<link rel="stylesheet" href="/css/custom.css">
+
+</head>
+
+<body>
+<!--wrapper start-->
+<div class="wrapper" id="wrapper">
+
+<!--Banner-->
+<header>
+
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar">
+<div class="container">
+<a class="navbar-brand" href="#"><strong>myJournal</strong></a>
+<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNavbar" aria-controls="myNavbar" aria-expanded="false" aria-label="Toggle navigation">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="myNavbar">
+<ul class="navbar-nav mr-auto">
+<li class="nav-item active">
+<a class="nav-link" href="/journal/all">Home <span class="sr-only">(current)</span></a>
+</li>
+<li class="nav-item">
+#if(isAdmin == true) {
+<a class="nav-link" href="/journal/logout">Logout</a>
+} else {
+<a class="nav-link" href="/journal/login?login">Admin</a>
+}
+</li>
+<li class="nav-item">
+<a class="nav-link" href="#">About</a>
+</li>
+</ul>
+</div>
+</div>
+</nav>
+
+
+<!--Jumbotron-->
+<div class="jumbotron banner-align-top" id="myBanner">
+<div class="banner-background text-center" style="background-image: url(/img/pier.png);">
+<div class="container text-center" id="banner-size">
+<h2 class="banner-title">My Journal</h2>
+<h3 class="banner-subtitle">The Path of Heart!</h3>
+</div>
+
+</div>
+</div>
+
+</header>

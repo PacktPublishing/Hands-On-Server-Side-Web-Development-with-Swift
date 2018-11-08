@@ -1,0 +1,30 @@
+#embed("header")
+#if(isAdmin == true) {
+[ <a class="fas fa-plus-square" href="/journal/all"> Go Home</a>
+| <a class="fas fa-user-alt" href="/journal/account/add"> Add New Account</a>
+]
+}
+<P>
+<div class="container">
+<div class="row">
+<div class="col-1"><b>ID</b></div>
+<div class="col-1"><b>Name</b></div>
+  <div class="col-2"><b>Login</b></div>
+  <div class="col-7"><b>Hashed Password</b></div>
+  <div class="col-1"><b>Action</b></div>
+</div> <!-- row -->
+#for(admin in admins) {
+<div class="row">
+<div class="col-1">#(admin.id)</div>
+<div class="col-1">#(admin.name)</div>
+  <div class="col-2">#(admin.login)</div>
+  <div class="col-7">#(admin.password)</div>
+  <div class="col-1"><a class="fas fa-trash-alt" href="/journal/account/#(admin.id)/remove">Remove</a></div>
+</div>  <!-- row -->
+}
+
+</div>
+#if(isAdmin == true) {
+Total: #(count);
+}
+#embed("footer")
