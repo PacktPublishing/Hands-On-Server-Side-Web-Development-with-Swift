@@ -26,20 +26,37 @@ public class App {
     }
 
     func postInit() throws {
-        
+
         router.setDefault(templateEngine: StencilTemplateEngine())
         router.get("/", middleware: StaticFileServer())
         
 
         // Endpoints
         initializeHealthRoutes(app: self)
-        initializeJournalRoutes(app: self)
-/*
-        router.post("/journal/api/new", handler: journalHandlers.newEntry)
-        router.get("/journal/api/get", handler: journalHandlers.getEntry)
-        router.put("/journal/api/edit", handler: journalHandlers.editEntry)
-        router.delete("/journal/api/remove", handler: journalHandlers.removeEntry)
-        */
+
+        let poolOptions = ConnectionPoolOptions(initialCapacity: 1,
+                                                maxCapacity: 5,
+                                                timeout: 10000)
+        
+        // Set up database connection
+        let psqlPool = PostgreSQLConnection.createPool(host: "localhost",
+                                                   port: 5432,
+                                                   options: [.databaseName("journalbook")],
+                                                   poolOptions: poolOptions)
+        Database.default = Database(psqlPool)
+
+        do {
+            try JournalItem.createTableSync()
+        } catch let error {
+            Log.error("Failed to create table in database: \(error)")
+        }
+
+        router.get("/journal/api/all", handler: getAllHandler)
+        router.get("/journal/api/admin", handler: getItemHandler)
+        router.post("/journal/api/admin", handler: createItemHandler)
+        router.put("/journal/api/admin", handler: updateItemHandler)
+        router.delete("/journal/api/admin", handler: deleteItemHandler)
+        router.delete("/journal/api/admin", handler: deleteItemHandler)
     }
 
     public func run() throws {
