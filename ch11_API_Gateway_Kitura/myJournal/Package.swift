@@ -13,7 +13,7 @@ let package = Package(
       .package(url: "https://github.com/IBM-Swift/Swift-Kuery-PostgreSQL.git", from: "1.2.0"),
     ],
     targets: [
-      .target(name: "myJournal", dependencies: [ .target(name: "Application"), "Kitura" , "HeliumLogger", "KituraStencil"]),
+      .target(name: "myJournal", dependencies: [ .target(name: "Application"), "Kitura" , "HeliumLogger"]),
       .target(name: "Application", dependencies: [ "Kitura", "CloudEnvironment","SwiftMetrics","Health", "SwiftKueryORM", "SwiftKueryPostgreSQL"]),
 
       .testTarget(name: "ApplicationTests" , dependencies: [.target(name: "Application"), "Kitura","HeliumLogger" ])
