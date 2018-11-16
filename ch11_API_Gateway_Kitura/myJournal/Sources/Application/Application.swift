@@ -1,5 +1,4 @@
 import Foundation
-import CLibpq
 import SwiftKueryORM
 import SwiftKueryPostgreSQL
 import Kitura
@@ -8,9 +7,6 @@ import Configuration
 import CloudEnvironment
 import KituraContracts
 import Health
-import Dispatch
-import KituraStencil
-
 
 
 public let projectPath = ConfigurationManager.BasePath.project.path
@@ -26,10 +22,6 @@ public class App {
     }
 
     func postInit() throws {
-
-        router.setDefault(templateEngine: StencilTemplateEngine())
-        router.get("/", middleware: StaticFileServer())
-        
 
         // Endpoints
         initializeHealthRoutes(app: self)
