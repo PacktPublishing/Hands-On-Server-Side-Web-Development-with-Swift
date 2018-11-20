@@ -26,15 +26,15 @@ public class App {
         // Endpoints
         initializeHealthRoutes(app: self)
         
-        router.get("/journal/total") { _, response, _ in
+        router.get("/journal") { _, response, _ in
             let total = journalRoutes.getTotal()
             response.send("\(total)")
         }
         
-        router.post("/journal/new", handler: journalRoutes.newEntry)
-        router.get("/journal/get", handler: journalRoutes.getEntry)
-        router.put("/journal/edit", handler: journalRoutes.editEntry)
-        router.delete("/journal/remove", handler: journalRoutes.removeEntry)
+        router.post("/journal", handler: journalRoutes.newEntry)
+        router.get("/journal", handler: journalRoutes.getEntry)
+        router.put("/journal", handler: journalRoutes.editEntry)
+        router.delete("/journal", handler: journalRoutes.removeEntry)
     }
 
     public func run() throws {
