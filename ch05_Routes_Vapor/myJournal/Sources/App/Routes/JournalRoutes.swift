@@ -28,23 +28,23 @@ struct JournalRoutes : RouteCollection {
             let newEntry = Entry(id: newID,
                                  title: entry.title,
                                  content: entry.content)
-            if let result = self.journal.create(newEntry) {
-                print("Created: \(result)")
+            guard let result = self.journal.create(newEntry) else {
+                throw Abort(.badRequest)
             }
+            print("Created: \(result)")
             return .ok
         }
     }
     
     func getEntry(_ req: Request) throws -> Entry {     // [6]
         let index = try req.parameters.next(Int.self)
-        print("Index = \(index)")
         let res = req.makeResponse()
-        if let entry = journal.read(index: index) {
-            try res.content.encode(entry, as: .formData)
-            print("Read: \(entry)")
-            return entry
+        guard let entry = journal.read(index: index) else {
+            throw Abort(.badRequest)
         }
-        return Entry(id: "-1")
+        print("Read: \(entry)")
+        try res.content.encode(entry, as: .formData)
+        return entry
     }
     
     func editEntry(_ req: Request) throws -> Future<HTTPStatus> {      // [7]
@@ -54,18 +54,20 @@ struct JournalRoutes : RouteCollection {
             let newEntry = Entry(id: newID,
                                  title: entry.title,
                                  content: entry.content)
-            if let result = self.journal.update(index: index, entry: newEntry) {
-                print("Updated: \(result)")
+            guard let result = self.journal.update(index: index, entry: newEntry) else {
+                throw Abort(.badRequest)
             }
+            print("Updated: \(result)")
             return .ok
         }
     }
 
     func removeEntry(_ req: Request) throws -> HTTPStatus {     // [8]
         let index = try req.parameters.next(Int.self)
-        if let result = self.journal.delete(index: index) {
-            print("Deleted: \(result)")
+        guard let result = self.journal.delete(index: index) else {
+            throw Abort(.badRequest)
         }
-        return HTTPStatus.ok
+        print("Deleted: \(result)")
+        return .ok
     }
 }
