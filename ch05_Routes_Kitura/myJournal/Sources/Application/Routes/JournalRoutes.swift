@@ -11,8 +11,7 @@ import Kitura
 struct JournalRoutes {
 
     let journal = JournalController()
-    
-    // doesn't work, completion has to be Codable
+
     func getTotal() -> Int {
         return journal.total()
     }
