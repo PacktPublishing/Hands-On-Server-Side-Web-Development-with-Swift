@@ -29,13 +29,9 @@ public func routes(_ router: Router) throws {
             "Kyle" : 4.00
         ]
         
-        var queryResponse : String
-        
         if let gpa = studentRecords[studentName] {
-            queryResponse = "The student \(studentName)'s GPA is \(gpa)"
-        } else {
-            queryResponse = "The student's record can't be found!"
-        }
-        return queryResponse
+            return "The student \(studentName)'s GPA is \(gpa)"
+        } 
+        return "The student's record can't be found!"
     }
 }
