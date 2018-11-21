@@ -11,7 +11,8 @@ class RouteTests: XCTestCase {
     static var port: Int!
     static var allTests : [(String, (RouteTests) -> () throws -> Void)] {
         return [
-            ("testGetStatic", testGetStatic)
+            ("testGetStatic", testGetStatic),
+            ("testStudent", testStudent)
         ]
     }
 
@@ -37,6 +38,39 @@ class RouteTests: XCTestCase {
     override func tearDown() {
         Kitura.stop()
         super.tearDown()
+    }
+
+    func testStudent() throws {
+        let studentRecords = [
+            "Peter" : 3.42,
+            "Thomas" : 2.98,
+            "Jane" : 3.91,
+            "Ryan" : 4.00,
+            "Kyle" : 4.00
+        ]
+
+        
+        for (studentName, gpa) in studentRecords {
+
+            let query = "student/" + studentName;
+
+            let printExpectation = expectation(description: 
+                "The  /student/<studentName> route will print a student's name, followed by the student's GPA.")
+        
+            URLRequest(forTestWithMethod: "GET", route: query)?
+                .sendForTestingWithKitura { data, statusCode in
+                    if let getResult = String(data: data, encoding: String.Encoding.utf8) {
+                        XCTAssertEqual(statusCode, 200)
+                        XCTAssertTrue(getResult.contains(studentName), studentName + " not found in the result.")
+                        XCTAssertTrue(getResult.contains(String(gpa)), studentName + ": GPA doesn't match in the result.")
+                    } else {
+                        XCTFail("Unable to convert request Data to String.")
+                    }
+                    printExpectation.fulfill()
+            }
+            waitForExpectations(timeout: 10.0, handler: nil)
+        }
+
     }
 
     func testGetStatic() {
