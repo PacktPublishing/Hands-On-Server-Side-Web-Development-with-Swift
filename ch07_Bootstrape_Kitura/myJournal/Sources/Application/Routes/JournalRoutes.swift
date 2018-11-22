@@ -54,41 +54,47 @@ func initializeJournalRoutes(app: App, journal: JournalController) {
             try response.redirect(mainPage)
         }
     }
-    
+ 
     app.router.get("/journal/get/:index?") { request, response, next in
-        if let index = request.parameters["index"] {
-            if let idx = Int(index) {
-                if let entry = journal.read(index: idx) {
-                    try response.render("entry", context: ["title": title, "author": author, "index": idx, "entry": entry])
-                }
-            }
+        guard let index = request.parameters["index"]  else {
+            return try response.status(.badRequest).send("Missing entry index").end()
         }
+        guard let idx = Int(index) else {
+            return try response.status(.badRequest).send("Invalid entry index").end()
+        }
+        guard let entry = journal.read(index: idx) else {
+            return try response.status(.unprocessableEntity).end()
+        }
+        try response.render("entry", context: ["title": title, "author": author, "index": idx, "entry": entry])
     }
     
     app.router.post("/journal/edit/:index?") { request, response, next in
-        if let index = request.parameters["index"] {
-            if let idx = Int(index) {
-                if let entry = try? request.read(as: Entry.self) {
-                    if let result = journal.update(index: idx, entry: entry) {
-                        print("Updated: Entry[\(index)]: \(result)")
-                        try response.redirect(mainPage)
-                    }
-                }
-                else {
-                    return try response.status(.unprocessableEntity).end()
-                }
+        guard let index = request.parameters["index"]  else {
+            return try response.status(.badRequest).send("Missing entry index").end()
+        }
+        guard let idx = Int(index) else {
+            return try response.status(.badRequest).send("Invalid entry index").end()
+        }
+        if let entry = try? request.read(as: Entry.self) {
+            if let result = journal.update(index: idx, entry: entry) {
+                print("Updated: Entry[\(index)]: \(result)")
+                try response.redirect(mainPage)
             }
         }
+        try response.status(.unprocessableEntity).end()
     }
     
     app.router.get("/journal/remove/:index?") { request, response, next in
-        if let index = request.parameters["index"] {
-            if let idx = Int(index) {
-                if let entry = journal.delete(index: idx) {
-                    print("Deleted: Entry[\(index)]: \(entry)")
-                    try response.redirect(mainPage)
-                }
-            }
+        guard let index = request.parameters["index"]  else {
+            return try response.status(.badRequest).send("Missing entry index").end()
         }
+        guard let idx = Int(index) else {
+            return try response.status(.badRequest).send("Invalid entry index").end()
+        }
+        if let entry = journal.delete(index: idx) {
+            print("Deleted: Entry[\(index)]: \(entry)")
+            try response.redirect(mainPage)
+        }
+        try response.status(.unprocessableEntity).end()
     }
 }
