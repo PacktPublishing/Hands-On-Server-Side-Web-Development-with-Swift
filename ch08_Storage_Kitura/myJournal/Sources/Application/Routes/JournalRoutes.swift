@@ -100,6 +100,26 @@ func initializeJournalRoutes(app: App) {
         }
       }
     }
+
+    app.router.post("/journal/edit/:index?") { request, response, next in
+      guard let index = request.parameters["index"]  else {
+          return try response.status(.badRequest).send("Missing entry index").end()
+      }
+      guard let idx = Int(index) else {
+          return try response.status(.badRequest).send("Invalid entry index").end()
+      }
+      guard let entry = try? request.read(as: JournalItem.self) else { 
+        return try response.status(.unprocessableEntity).end() 
+      }
+      let item = JournalItem(title: entry.title, content: entry.content)
+      item.update(id: index) { item, error in 
+        do {
+          try response.redirect(mainPage)
+        } catch let error {
+              response.send(error.localizedDescription)
+        } 
+      } 
+    }
     
     app.router.get("/journal/remove/:index?") { request, response, next in
       guard let index = request.parameters["index"]  else {
