@@ -93,7 +93,7 @@ struct JournalRoutes : RouteCollection {
         }
     }
     
-    func addAccount(_ req: Request) throws ->  ,<View> {
+    func addAccount(_ req: Request) throws ->  Future<View> {
         let leaf = try req.make(LeafRenderer.self)
         let isAdmin = try req.isAuthenticated(Admin.self)
         let context = CreateContext(isAdmin: isAdmin,
@@ -147,18 +147,11 @@ struct JournalRoutes : RouteCollection {
     
     func showLogin(_ req: Request) throws -> Future<View> {
         let leaf = try req.make(LeafRenderer.self)
-        let loginError : Bool
-        let loginRequired : Bool
-        if req.query[Bool.self, at: "error"] != nil {
-            loginError = true
-        } else {
-            loginError = false
-        }
-        if req.query[Bool.self, at: "login"] != nil {
-            loginRequired = true
-        } else {
-            loginRequired = false
-        }
+        var loginError : Bool = false
+        var loginRequired : Bool = false
+        if req.query[Bool.self, at: "error"] != nil { loginError = true } 
+        if req.query[Bool.self, at: "login"] != nil { loginRequired = true } 
+
         let context = LoginContext(login: loginRequired,
                                    error: loginError,
                                    title: self.title,
