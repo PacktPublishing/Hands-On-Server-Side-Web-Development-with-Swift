@@ -43,12 +43,12 @@ public class App {
             Log.error("Failed to create table in database: \(error)")
         }
 
-        router.get("/journal/api/all", handler: getAllHandler)
-        router.get("/journal/api/admin", handler: getItemHandler)
-        router.post("/journal/api/admin", handler: createItemHandler)
-        router.put("/journal/api/admin", handler: updateItemHandler)
-        router.delete("/journal/api/admin", handler: deleteItemHandler)
-        router.delete("/journal/api/admin", handler: deleteItemHandler)
+        router.get("/api/journal", handler: getAllHandler)
+        router.get("/api/admin", handler: getItemHandler)
+        router.post("/api/admin", handler: createItemHandler)
+        router.put("/api/admin", handler: updateItemHandler)
+        router.delete("/api/admin", handler: deleteItemHandler)
+        router.delete("/api/admin", handler: deleteItemHandler)
     }
 
     public func run() throws {
