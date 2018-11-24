@@ -30,14 +30,13 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     middlewares.use(SessionsMiddleware.self)
     services.register(middlewares)
 
-    // Configure a SQLite database
+    // Configure a PostgreSQL database
     let postgresql = PostgreSQLDatabase(config: PostgreSQLDatabaseConfig(hostname: "localhost",
                                                                          username: "fyeung1",
                                                                          database: "myjournal"))
 
     /// Register the configured SQLite database to the database config.
     var databases = DatabasesConfig()
-    // databases.add(database: sqlite, as: .sqlite)
     databases.add(database: postgresql, as: .psql)
     services.register(databases)
 

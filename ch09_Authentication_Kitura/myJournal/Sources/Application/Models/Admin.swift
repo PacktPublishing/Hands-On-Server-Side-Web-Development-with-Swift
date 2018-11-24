@@ -1,5 +1,5 @@
 //
-//  JournalEntry.swift
+//  Admin.swift
 //  Application
 //
 //  Created by Angus yeung on 10/15/18.

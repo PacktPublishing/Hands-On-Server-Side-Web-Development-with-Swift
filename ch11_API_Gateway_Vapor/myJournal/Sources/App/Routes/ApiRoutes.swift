@@ -6,31 +6,18 @@ struct ApiRoutes : RouteCollection {
     
     func boot(router: Router) throws {
         
-//        let authSession = Admin.basicAuthMiddleware(using: BCryptDigest())
-//        let authRouter = router.grouped(authSession)
-//        let publicRouter = authRouter.grouped("/journal/api")
-        
         let publicRouter = router.grouped("/journal/api")
         
         // public routes
         publicRouter.get("", use: getAll)
         publicRouter.get("all", use: getAll)
-//        publicRouter.post("auth", use: checkLogin)
-//        publicRouter.get("unauth", use: handleUnauth)
- //       publicRouter.get("logout", use: logout)
-        
-//        let securedRouter = authRouter.grouped(RedirectMiddleware<Admin>(path: "/api/unauth"))
-        
-        // protected routes: entries
-//        let adminRouter = securedRouter.grouped("/admin")
+
         let adminRouter = publicRouter.grouped("/admin")
         adminRouter.post(use: newEntry)
         adminRouter.get(Int.parameter, use: getEntry)
         adminRouter.put(Int.parameter, use: editEntry)
         adminRouter.delete(Int.parameter, use: removeEntry)
         
-        // protected routes: accounts
-//        let accountRouter = securedRouter.grouped("/account")
         let accountRouter = publicRouter.grouped("/account")
         accountRouter.get(use: getAccounts)
         accountRouter.post(use: newAccount)
