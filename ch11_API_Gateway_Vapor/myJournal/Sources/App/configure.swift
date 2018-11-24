@@ -14,12 +14,7 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     let router = EngineRouter.default()
     try routes(router)
     services.register(router, as: Router.self)
-    
-    /// Register Leaf templating engine
-    try services.register(LeafProvider())
-    
-    /// Register authentication engine
-    try services.register(AuthenticationProvider())
+
     
     config.prefer(MemoryKeyedCache.self, for: KeyedCache.self)
 
@@ -43,8 +38,6 @@ public func configure(_ config: inout Config, _ env: inout Environment, _ servic
     /// Configure migrations
     var migrations = MigrationConfig()
     migrations.add(model: JournalEntry.self, database: .psql)
-    migrations.add(model: Admin.self, database: .psql)
-    migrations.add(model: AdminToken.self, database: .psql)
     services.register(migrations)
 
     config.prefer(LeafRenderer.self, for: ViewRenderer.self)
