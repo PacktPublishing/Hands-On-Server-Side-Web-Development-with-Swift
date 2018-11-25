@@ -108,7 +108,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="doneButton" destination="QgT-w7-0st" id="kfq-Xt-vyc"/>
                         <outlet property="entryContent" destination="vgU-6t-acB" id="T4h-0E-Phc"/>
                         <outlet property="entryTitle" destination="Zsq-TB-0T4" id="gok-AJ-sYl"/>
                     </connections>

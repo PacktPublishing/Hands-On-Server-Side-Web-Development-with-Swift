@@ -69,22 +69,24 @@ extension MainScreenViewController {
         print("INFO: Packing int JSON object: \(jsonData)")
         
         // configure URL request
-        if let id = entry.id {
-            let idString : String = "/admin/\(id)"
-            let journalUrl = URL(string: apiURL + idString)!
-            var request = URLRequest(url: journalUrl)
-            request.httpMethod = "PUT"
-            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            print("INFO: Putting to Server: \(request)")
-            
-            // Start an URLSession Task
-            URLSession.shared.uploadTask(with: request, from: jsonData) { (data, response, error) in
-                if let error = error {
-                    print("Error", error)
-                    return
-                }
-                }.resume()
+        guard let id = entry.id else {
+            print("Error: Invalid ID")
+            return
         }
+        let idString : String = "/admin/\(id)"
+        let journalUrl = URL(string: apiURL + idString)!
+        var request = URLRequest(url: journalUrl)
+        request.httpMethod = "PUT"
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        print("INFO: Putting to Server: \(request)")
+        
+        // Start an URLSession Task
+        URLSession.shared.uploadTask(with: request, from: jsonData) { (data, response, error) in
+            if let error = error {
+                print("Error", error)
+                return
+            }
+        }.resume()
     }
     
     // Remove an existing entry
@@ -96,20 +98,22 @@ extension MainScreenViewController {
         print("INFO: Packing int JSON object: \(jsonData)")
         
         // configure URL request
-        if let id = entry.id {
-            let idString : String = "/admin/\(id)"
-            let journalUrl = URL(string: apiURL + idString)!
-            var request = URLRequest(url: journalUrl)
-            request.httpMethod = "DELETE"
-            print("INFO: Requesting Server to delete: \(request)")
-            
-            // Start an URLSession Task
-            URLSession.shared.uploadTask(with: request, from: jsonData) { (data, response, error) in
-                if let error = error {
-                    print("Error", error)
-                    return
-                }
-                }.resume()
+        guard let id = entry.id else {
+            print("Error: Invalid ID")
+            return
         }
+        let idString : String = "/admin/\(id)"
+        let journalUrl = URL(string: apiURL + idString)!
+        var request = URLRequest(url: journalUrl)
+        request.httpMethod = "DELETE"
+        print("INFO: Requesting Server to delete: \(request)")
+        
+        // Start an URLSession Task
+        URLSession.shared.uploadTask(with: request, from: jsonData) { (data, response, error) in
+            if let error = error {
+                print("Error", error)
+                return
+            }
+        }.resume()
     }
 }
