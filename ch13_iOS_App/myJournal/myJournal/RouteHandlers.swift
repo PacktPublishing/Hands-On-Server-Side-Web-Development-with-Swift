@@ -28,8 +28,8 @@ extension MainScreenViewController {
                 }
                 // signal the UI thread to reload table data
                 DispatchQueue.main.async { self.tableView.reloadData() }
-            } catch let err {
-                print("Error", err)
+            } catch {
+                print("Error", error)
             }
         }.resume()
     }
