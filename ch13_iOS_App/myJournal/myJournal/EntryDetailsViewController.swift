@@ -24,7 +24,6 @@ class EntryDetailsViewController : UIViewController {
     
     @IBOutlet weak var entryTitle: UITextField!
     @IBOutlet weak var entryContent: UITextView!
-    @IBOutlet weak var doneButton: UIBarButtonItem!
     
     weak var delegate : EntryDetailsViewControllerDelegate?
     
