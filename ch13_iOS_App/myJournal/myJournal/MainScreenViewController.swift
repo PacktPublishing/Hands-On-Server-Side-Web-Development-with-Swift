@@ -85,15 +85,17 @@ class MainScreenViewController: UITableViewController, EntryDetailsViewControlle
     }
     
     func updateEntry(entry: JournalEntry) {
-        if let index = journalEntries.index(of: entry) {
-            journalEntries[index] = entry
-            editEntry(entry: entry)
-            let indexPath = IndexPath(row: index, section: 0)
-            if let cell = tableView.cellForRow(at: indexPath) {
-                // cell.textLabel!.text = entry.title
-                let label = cell.viewWithTag(1000) as! UILabel
-                label.text = entry.title
-            }
+        guard let index = journalEntries.index(of: entry) else {
+            print("Error in reading the specified journal entry.")
+            return
+        }
+        journalEntries[index] = entry
+        editEntry(entry: entry)
+        let indexPath = IndexPath(row: index, section: 0)
+        if let cell = tableView.cellForRow(at: indexPath) {
+            // cell.textLabel!.text = entry.title
+            let label = cell.viewWithTag(1000) as! UILabel
+            label.text = entry.title
         }
     }
 
