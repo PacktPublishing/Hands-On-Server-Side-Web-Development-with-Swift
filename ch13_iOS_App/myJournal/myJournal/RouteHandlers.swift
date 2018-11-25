@@ -13,7 +13,7 @@ extension MainScreenViewController {
     
     // Read all entries
     func getAll() {
-        guard let journalUrl = URL(string: apiURL + "/all") else { return }
+        guard let journalUrl = URL(string: apiURL + "/journal") else { return }
         URLSession.shared.dataTask(with: journalUrl) { (data, response, error) in
             guard let jsonData = data else { return }
             print("INFO: Getting JSON data...")

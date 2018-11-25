@@ -11,7 +11,7 @@ import UIKit
 class MainScreenViewController: UITableViewController, EntryDetailsViewControllerDelegate {
     
     
-    let apiURL : String  = "http://localhost:8080/journal/api"
+    let apiURL : String  = "http://localhost:8080/api"
     var journalEntries = [JournalEntry]()
 
     override func viewDidLoad() {
