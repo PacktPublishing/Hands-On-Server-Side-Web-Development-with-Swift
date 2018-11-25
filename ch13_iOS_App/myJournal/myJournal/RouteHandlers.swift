@@ -22,10 +22,7 @@ extension MainScreenViewController {
                 let entries = try JSONDecoder().decode([JournalEntry].self, from: jsonData)
                  print("INFO: Decoding JSON data...")
                 // append each entry to the local store
-                entries.forEach {
-                    self.journalEntries.append($0)
-                    print("INFO: Adding data entry: \($0)")
-                }
+                self.journalEntries.append(contentsOf: entries)
                 // signal the UI thread to reload table data
                 DispatchQueue.main.async { self.tableView.reloadData() }
             } catch {
