@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Avp-zz-p0o">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Avp-zz-p0o">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,14 +25,19 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="64c-Wm-tbG">
-                                            <rect key="frame" x="8" y="0.0" width="359" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" tag="1000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="64c-Wm-tbG">
+                                            <rect key="frame" x="10" y="10" width="355" height="23.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="64c-Wm-tbG" secondAttribute="trailing" constant="10" id="YtD-1q-48X"/>
+                                        <constraint firstItem="64c-Wm-tbG" firstAttribute="top" secondItem="892-yd-sfD" secondAttribute="top" constant="10" id="u6B-Ei-GfP"/>
+                                        <constraint firstAttribute="bottom" secondItem="64c-Wm-tbG" secondAttribute="bottom" constant="10" id="uKP-xl-mmN"/>
+                                        <constraint firstItem="64c-Wm-tbG" firstAttribute="leading" secondItem="892-yd-sfD" secondAttribute="leading" constant="10" id="x5N-iB-2sk"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="RrT-uf-gHV" kind="show" identifier="EditEntry" id="3Jf-72-fHM"/>
@@ -64,22 +69,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title of the New Entry" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zsq-TB-0T4">
-                                <rect key="frame" x="8" y="79" width="361" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Title of the New Entry" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Zsq-TB-0T4">
+                                <rect key="frame" x="10" y="74" width="355" height="21"/>
+                                <viewLayoutGuide key="safeArea" id="Am8-zo-EEc"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="continue"/>
                             </textField>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vgU-6t-acB">
-                                <rect key="frame" x="8" y="135" width="361" height="519"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vgU-6t-acB">
+                                <rect key="frame" x="10" y="105" width="355" height="552"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vgU-6t-acB" firstAttribute="leading" secondItem="z0w-xC-IgA" secondAttribute="leading" constant="10" id="4y3-LK-LHF"/>
+                            <constraint firstItem="z0w-xC-IgA" firstAttribute="trailing" secondItem="Zsq-TB-0T4" secondAttribute="trailing" constant="10" id="TVp-Fo-LI5"/>
+                            <constraint firstItem="z0w-xC-IgA" firstAttribute="bottom" secondItem="vgU-6t-acB" secondAttribute="bottom" constant="10" id="dVK-sD-btY"/>
+                            <constraint firstItem="Zsq-TB-0T4" firstAttribute="leading" secondItem="z0w-xC-IgA" secondAttribute="leading" constant="10" id="lme-ZZ-02L"/>
+                            <constraint firstItem="z0w-xC-IgA" firstAttribute="trailing" secondItem="vgU-6t-acB" secondAttribute="trailing" constant="10" id="mNQ-PD-gvZ"/>
+                            <constraint firstItem="Zsq-TB-0T4" firstAttribute="top" secondItem="z0w-xC-IgA" secondAttribute="top" constant="10" id="wKv-e8-dxw"/>
+                            <constraint firstItem="vgU-6t-acB" firstAttribute="top" secondItem="Zsq-TB-0T4" secondAttribute="bottom" constant="10" id="zic-Dh-nJU"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="z0w-xC-IgA"/>
                     </view>
                     <navigationItem key="navigationItem" title="Journal Entry" id="e97-DE-btd">
