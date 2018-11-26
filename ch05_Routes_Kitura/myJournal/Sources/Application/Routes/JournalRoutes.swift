@@ -41,8 +41,8 @@ struct JournalRoutes {
         }
     }
     
-    func getEntry(index: Int, completion: (Entry?, RequestError?) -> Void ) {
-        if let entry = journal.read(index: index) {
+    func getEntry(id: Int, completion: (Entry?, RequestError?) -> Void ) {
+        if let entry = journal.read(index: id) {
             completion(entry, nil)
             return
         }
