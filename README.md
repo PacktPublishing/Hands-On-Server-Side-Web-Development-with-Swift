@@ -3,7 +3,7 @@ Hands-On Server-Side Web Development with Swift, published by Packt
 
 <a href="https://india.packtpub.com/in//web-development/hands-server-side-web-development-swift?utm_source=github&utm_medium=repository&utm_campaign=9781789341171"><img src="Cover Image URL of the Book" alt="Hands-On Server-Side Web Development with Swift" height="256px" align="right"></a>
 
-This is the code repository for [Hands-On Server-Side Web Development with Swift](Packt UTM URL of the Book), published by Packt.
+This is the code repository for [Hands-On Server-Side Web Development with Swift](https://www.packtpub.com/web-development/hands-server-side-web-development-swift?utm_source=github&utm_medium=repository&utm_campaign=9781789341171), published by Packt.
 
 **Build dynamic web apps by leveraging two popular Swift web frameworks**
 
